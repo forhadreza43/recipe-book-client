@@ -8,7 +8,7 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-gray-900 px-4 py-8 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 text-center md:grid-cols-3 md:text-left">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 text-center md:grid-cols-3 md:text-left w-11/12 mx-auto">
         {/* Website Name */}
         <div>
           <h2 className="text-2xl font-bold text-orange-400">Recipe Book</h2>
