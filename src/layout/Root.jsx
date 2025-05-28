@@ -13,9 +13,8 @@ const Root = () => {
   return (
     <>
       <Navbar />
-      {isLoading && <LoadingSpinner />}
-      {/* {isLoading && <GlobalLoader />} */}
-      <main className="duration-900 min-h-dvh">
+      {isLoading && <GlobalLoader />}
+      <main className="duration-900 min-h-dvh w-11/12 max-w-7xl mx-auto">
         <Outlet />
       </main>
       <Footer />

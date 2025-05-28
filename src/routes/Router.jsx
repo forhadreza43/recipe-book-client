@@ -6,6 +6,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import AddRecipe from "../components/AddRecipe";
 import AllRecipes from "../components/AllRecipes";
+import RecipeDetails from "../components/RecipeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -45,10 +46,14 @@ export const router = createBrowserRouter([
         path: "/recipes",
         element: <AllRecipes />,
       },
-      // {
-      //   path: "/recipes/:id",
-      //   element: <RecipeDetails />, 
-      // },
+      {
+        path: "/recipes/:id",
+        element: (
+          <PrivateRoute>
+            <RecipeDetails />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
