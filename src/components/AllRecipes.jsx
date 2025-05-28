@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import GlobalLoader from "./GlobalLoader";
 
 export default function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(
-          "https://recipe-book-app-server-chi.vercel.app/recipes",
-        );
+        const response = await fetch("http://localhost:3000/recipes");
         const data = await response.json();
         setRecipes(data);
       } catch (error) {
         console.error("Failed to fetch recipes:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchRecipes();
-  }, []);
+  }, [recipes]);
+
+  if (loading) {
+    return <GlobalLoader mini />;
+  }
 
   return (
     <div className="px-6 py-10">

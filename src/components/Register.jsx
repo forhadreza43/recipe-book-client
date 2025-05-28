@@ -34,7 +34,7 @@ export default function Register() {
             type="text"
             placeholder="Full Name"
             required
-            className="w-full rounded border border-orange-300 px-4 py-2 text-gray-600 outline-none placeholder:text-gray-400 focus:border-orange-600"
+            className="input-field"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -42,7 +42,7 @@ export default function Register() {
             type="email"
             placeholder="Email"
             required
-            className="w-full rounded border border-orange-300 px-4 py-2 text-gray-600 outline-none placeholder:text-gray-400 focus:border-orange-600"
+            className="input-field"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -50,7 +50,7 @@ export default function Register() {
             type="password"
             placeholder="Password"
             required
-            className="w-full rounded border border-orange-300 px-4 py-2 text-gray-600 outline-none placeholder:text-gray-400 focus:border-orange-600"
+            className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

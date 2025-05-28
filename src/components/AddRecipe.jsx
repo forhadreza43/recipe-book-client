@@ -49,7 +49,7 @@ export default function AddRecipe() {
     };
 
     try {
-      fetch("https://recipe-book-app-server-chi.vercel.app/recipes", {
+      fetch("http://localhost:3000/recipes", {
         method: "POST",
         headers: {
           "content-type": "application/json",

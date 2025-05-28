@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
+import GlobalLoader from "./GlobalLoader";
 
 export default function RecipeDetails() {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
-console.log(id);
+  const [likeCount, setLikeCount] = useState(0);
+
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await fetch(
-          `https://recipe-book-app-server-chi.vercel.app/recipes/${id}`,
-        );
+        const response = await fetch(`http://localhost:3000/recipes/${id}`);
         const data = await response.json();
         setRecipe(data);
+        setLikeCount(data.likes || 0);
       } catch (error) {
         console.error("Error fetching recipe:", error);
       } finally {
@@ -22,13 +26,43 @@ console.log(id);
     };
     fetchRecipe();
   }, [id]);
-  console.log(recipe);
-  if (loading) return <div className="mt-10 text-center">Loading...</div>;
+
+  const handleLike = async () => {
+    if (user?.email === recipe.userEmail) {
+      toast.error("You can't like your own recipe!");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3000/recipes/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const updatedRecipe = await response.json();
+        setLikeCount(updatedRecipe.likes);
+        toast.success("You liked the recipe!");
+      } else {
+        toast.error("Failed to like the recipe.");
+      }
+    } catch (error) {
+      console.error("Error liking recipe:", error);
+      toast.error("Something went wrong.");
+    }
+  };
+
+  if (loading) return <GlobalLoader mini={true} />;
 
   if (!recipe) return <div className="mt-10 text-center">Recipe not found</div>;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <p className="mb-4 text-xl font-semibold text-orange-500">
+        {likeCount} people interested in this recipe
+      </p>
+
       <img
         src={recipe.image}
         alt={recipe.title}
@@ -42,7 +76,7 @@ console.log(id);
         <strong>Prep Time:</strong> {recipe.prepTime} minutes
       </p>
       <p className="mb-1 text-gray-600">
-        <strong>Likes:</strong> {recipe.likes || 0}
+        <strong>Likes:</strong> {likeCount}
       </p>
       <p className="mb-1 text-gray-600">
         <strong>Categories:</strong> {recipe.categories?.join(", ")}
@@ -56,10 +90,18 @@ console.log(id);
         <p className="whitespace-pre-line">{recipe.ingredients}</p>
       </div>
 
-      <div>
+      <div className="mb-6">
         <h2 className="mb-2 text-xl font-semibold">Instructions:</h2>
         <p className="whitespace-pre-line">{recipe.instructions}</p>
       </div>
+
+      <button
+        onClick={handleLike}
+        className="mt-4 rounded bg-orange-500 px-6 py-2 text-white hover:bg-orange-600 disabled:cursor-not-allowed"
+        disabled={user?.email === recipe.userEmail}
+      >
+        Like
+      </button>
     </div>
   );
 }

@@ -4,9 +4,14 @@ import PrivateRoute from "./PrivateRoute";
 import NotFound from "../components/NotFound";
 import Login from "../components/Login";
 import Register from "../components/Register";
-import AddRecipe from "../components/AddRecipe";
-import AllRecipes from "../components/AllRecipes";
+import { lazy, Suspense } from "react";
+import GlobalLoader from "../components/GlobalLoader";
 import RecipeDetails from "../components/RecipeDetails";
+
+// Lazy-loaded pages
+const AllRecipes = lazy(() => import("../components/AllRecipes"));
+const AddRecipe = lazy(() => import("../components/AddRecipe"));
+const MyRecipe = lazy(() => import("../components/MyRecipe"));
 
 export const router = createBrowserRouter([
   {
@@ -18,10 +23,30 @@ export const router = createBrowserRouter([
         element: <h1>Home Page</h1>,
       },
       {
+        path: "/recipes",
+        element: (
+          <Suspense fallback={<GlobalLoader mini={true} />}>
+            <AllRecipes />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/recipes/:id",
+        element: (
+          <PrivateRoute>
+            <Suspense fallback={<GlobalLoader mini={true} />}>
+              <RecipeDetails />
+            </Suspense>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/addRecipe",
         element: (
           <PrivateRoute>
-            <AddRecipe />
+            <Suspense fallback={<GlobalLoader mini={true} />}>
+              <AddRecipe />
+            </Suspense>
           </PrivateRoute>
         ),
       },
@@ -29,8 +54,9 @@ export const router = createBrowserRouter([
         path: "/myRecipe",
         element: (
           <PrivateRoute>
-            {" "}
-            <h1>My recipe page</h1>{" "}
+            <Suspense fallback={<GlobalLoader mini={true} />}>
+              <MyRecipe />
+            </Suspense>
           </PrivateRoute>
         ),
       },
@@ -41,18 +67,6 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      {
-        path: "/recipes",
-        element: <AllRecipes />,
-      },
-      {
-        path: "/recipes/:id",
-        element: (
-          <PrivateRoute>
-            <RecipeDetails />
-          </PrivateRoute>
-        ),
       },
     ],
   },

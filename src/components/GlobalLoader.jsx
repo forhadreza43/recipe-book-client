@@ -1,9 +1,13 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import animationData from "../assets/cooking-loader.json";
 
-export default function GlobalLoader() {
+export default function GlobalLoader({ mini = false }) {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
+    <div
+      className={`flex flex-col items-center justify-center ${
+        mini ? "min-h-[60vh]" : "fixed inset-0 z-50 bg-white"
+      }`}
+    >
       <Player
         autoplay
         loop
@@ -16,3 +20,5 @@ export default function GlobalLoader() {
     </div>
   );
 }
+
+
