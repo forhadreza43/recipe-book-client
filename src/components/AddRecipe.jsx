@@ -79,7 +79,7 @@ export default function AddRecipe() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl rounded bg-white p-6 shadow">
+    <div className="mx-auto mt-20 max-w-3xl rounded bg-orange-50 p-6 shadow">
       <h2 className="mb-4 text-2xl font-bold">Add a New Recipe</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -88,7 +88,7 @@ export default function AddRecipe() {
           placeholder="Image URL"
           value={formData.image}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         />
 
@@ -98,7 +98,7 @@ export default function AddRecipe() {
           placeholder="Recipe Title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         />
 
@@ -107,7 +107,7 @@ export default function AddRecipe() {
           placeholder="Ingredients"
           value={formData.ingredients}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         />
 
@@ -116,7 +116,7 @@ export default function AddRecipe() {
           placeholder="Instructions"
           value={formData.instructions}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         />
 
@@ -124,7 +124,7 @@ export default function AddRecipe() {
           name="cuisine"
           value={formData.cuisine}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         >
           <option value="">Select Cuisine Type</option>
@@ -139,7 +139,7 @@ export default function AddRecipe() {
           placeholder="Preparation Time (minutes)"
           value={formData.time}
           onChange={handleChange}
-          className="w-full rounded border p-2"
+          className="input-field"
           required
         />
 
@@ -151,6 +151,7 @@ export default function AddRecipe() {
                 <input
                   type="checkbox"
                   name="categories"
+                  className=""
                   value={cat}
                   checked={formData.categories.includes(cat)}
                   onChange={handleChange}
@@ -163,7 +164,7 @@ export default function AddRecipe() {
 
         <button
           type="submit"
-          className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          className="cursor-pointer rounded bg-orange-600 px-4 py-2 text-white hover:bg-orange-700"
         >
           Add Recipe
         </button>

@@ -5,6 +5,7 @@ import NotFound from "../components/NotFound";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import AddRecipe from "../components/AddRecipe";
+import AllRecipes from "../components/AllRecipes";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         path: "/addRecipe",
         element: (
           <PrivateRoute>
-            <AddRecipe/>
+            <AddRecipe />
           </PrivateRoute>
         ),
       },
@@ -40,6 +41,14 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/recipes",
+        element: <AllRecipes />,
+      },
+      // {
+      //   path: "/recipes/:id",
+      //   element: <RecipeDetails />, 
+      // },
     ],
   },
   {
