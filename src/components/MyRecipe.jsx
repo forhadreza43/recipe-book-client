@@ -77,35 +77,37 @@ export default function MyRecipes() {
           <h1 className="mb-6 text-center text-3xl font-bold">My Recipes</h1>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {recipes.map((recipe) => (
-              <div key={recipe._id} className="rounded-lg border p-4 shadow">
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="h-40 w-full rounded object-cover"
-                />
-                <h2 className="mt-2 text-xl font-semibold">{recipe.title}</h2>
-                <p>
-                  <strong>Cuisine:</strong> {recipe.cuisine}
-                </p>
-                <p>
-                  <strong>Time:</strong> {recipe.prepTime} mins
-                </p>
-                <p>
-                  <strong>Likes:</strong> {recipe.likes}
-                </p>
-                <p>
-                  <strong>Category:</strong> {recipe.categories?.join(", ")}
-                </p>
-                <p>
-                  <strong>Ingredients:</strong> {recipe.ingredients}
-                </p>
-                <p>
-                  <strong>Instructions:</strong> {recipe.instructions}
-                </p>
+              <div key={recipe._id} className="rounded-lg border border-orange-300 p-4 shadow flex flex-col justify-between">
+                <div>
+                  <img
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="h-40 w-full rounded object-cover"
+                  />
+                  <h2 className="mt-2 text-xl font-semibold">{recipe.title}</h2>
+                  <p>
+                    <strong>Cuisine:</strong> {recipe.cuisine}
+                  </p>
+                  <p>
+                    <strong>Time:</strong> {recipe.prepTime} mins
+                  </p>
+                  <p>
+                    <strong>Likes:</strong> {recipe.likes}
+                  </p>
+                  <p>
+                    <strong>Category:</strong> {recipe.categories?.join(", ")}
+                  </p>
+                  <p>
+                    <strong>Ingredients:</strong> {recipe.ingredients}
+                  </p>
+                  <p>
+                    <strong>Instructions:</strong> {recipe.instructions}
+                  </p>
+                </div>
                 <div className="mt-2 flex justify-between">
                   <button
                     onClick={() => setSelectedRecipe(recipe)}
-                    className="rounded bg-blue-500 px-3 py-1 text-white"
+                    className="rounded bg-orange-500 px-3 py-1 text-white"
                   >
                     Update
                   </button>

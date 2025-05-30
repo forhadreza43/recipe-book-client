@@ -7,6 +7,7 @@ import Register from "../components/Register";
 import { lazy, Suspense } from "react";
 import GlobalLoader from "../components/GlobalLoader";
 import RecipeDetails from "../components/RecipeDetails";
+import Home from "../components/Home";
 
 // Lazy-loaded pages
 const AllRecipes = lazy(() => import("../components/AllRecipes"));
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Home Page</h1>,
+        element: (
+          <Suspense fallback={<GlobalLoader mini={true} />}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/recipes",

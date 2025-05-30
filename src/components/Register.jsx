@@ -7,6 +7,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ export default function Register() {
     setError("");
     try {
       await createUser(email, password);
-      await updateUserProfile({ displayName: name });
+      await updateUserProfile({ displayName: name, photoURL: photoURL });
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -53,6 +54,14 @@ export default function Register() {
             className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="url"
+            placeholder="Photo URL"
+            required
+            className="input-field"
+            value={photoURL}
+            onChange={(e) => setPhotoURL(e.target.value)}
           />
           <button className="w-full rounded bg-orange-500 py-2 text-white hover:bg-orange-600">
             Register

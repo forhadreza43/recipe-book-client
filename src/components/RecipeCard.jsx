@@ -14,9 +14,6 @@ const RecipeCard = ({ recipe }) => {
         />
         <h2 className="text-xl font-semibold">{recipe.title}</h2>
         <p className="text-sm text-gray-600">Cuisine: {recipe.cuisine}</p>
-        <p className="text-sm text-gray-600">
-          Prep Time: {recipe.prepTime} mins
-        </p>
         <p className="text-sm text-gray-600">Likes: {recipe.likes || 0}</p>
         <Link
           to={`/recipes/${recipe._id}`}

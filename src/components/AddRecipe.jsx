@@ -2,8 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Timestamp } from "firebase/firestore";
 import toast from "react-hot-toast";
-
-const cuisineTypes = ["Italian", "Mexican", "Indian", "Chinese", "Others"];
+import { cuisineTypes } from "../utils/utils";
 const categories = ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"];
 
 export default function AddRecipe() {
@@ -79,7 +78,7 @@ export default function AddRecipe() {
   };
 
   return (
-    <div className="mx-auto mt-20 max-w-3xl rounded bg-orange-50 p-6 shadow">
+    <div className="mx-auto mt-20 max-w-3xl rounded border border-orange-300 p-6 shadow">
       <h2 className="mb-4 text-2xl font-bold">Add a New Recipe</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
