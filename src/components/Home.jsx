@@ -52,6 +52,33 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="rounded-lg bg-orange-50 px-6 py-12">
+        <h2 className="mb-6 text-center text-2xl font-bold">Why Choose Us?</h2>
+        <div className="grid gap-6 text-center sm:grid-cols-2 md:grid-cols-3">
+          <div>
+            <PiChefHat size={64} className="mx-auto mb-3 h-16" />
+            <h4 className="text-lg font-semibold">Expert-Approved Recipes</h4>
+            <p className="text-sm text-gray-600">
+              All recipes are tested by top chefs.
+            </p>
+          </div>
+          <div>
+            <IoIosTimer size={64} className="mx-auto mb-3 h-16" />
+            <h4 className="text-lg font-semibold">Quick & Easy</h4>
+            <p className="text-sm text-gray-600">
+              Meals ready in under 30 minutes.
+            </p>
+          </div>
+          <div>
+            <MdOutlineFamilyRestroom className="mx-auto mb-3 h-16" size={64} />
+            <h4 className="text-lg font-semibold">Family-Friendly</h4>
+            <p className="text-sm text-gray-600">
+              Perfect for all ages and occasions.
+            </p>
+          </div>
+        </div>
+      </section>
+
       
     </>
   );
