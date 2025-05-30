@@ -78,8 +78,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      
+      <section className="px-6 py-12">
+        <h2 className="mb-6 text-center text-2xl font-bold">Cooking Tips</h2>
+        <div className="mx-auto max-w-3xl space-y-4 text-gray-700">
+          <p>✔️ Always prep your ingredients before you start cooking.</p>
+          <p>✔️ Taste as you go to adjust seasonings perfectly.</p>
+          <p>✔️ Clean as you cook for a smoother experience.</p>
+        </div>
+      </section>
     </>
   );
 }
