@@ -73,29 +73,31 @@ export default function RecipeDetails() {
         alt={recipe.title}
         className="mb-6 h-64 w-full rounded-lg object-cover"
       />
-      <h1 className="mb-2 text-3xl font-bold">{recipe.title}</h1>
-      <p className="mb-1 text-gray-600">
+      <h1 className="mb-2 text-3xl font-bold dark:text-gray-200">
+        {recipe.title}
+      </h1>
+      <p className="mb-1 text-gray-600 dark:text-gray-200">
         <strong>Cuisine:</strong> {recipe.cuisine}
       </p>
-      <p className="mb-1 text-gray-600">
+      <p className="mb-1 text-gray-600 dark:text-gray-200">
         <strong>Prep Time:</strong> {recipe.prepTime} minutes
       </p>
-      <p className="mb-1 text-gray-600">
+      <p className="mb-1 text-gray-600 dark:text-gray-200">
         <strong>Likes:</strong> {likeCount}
       </p>
-      <p className="mb-1 text-gray-600">
+      <p className="mb-1 text-gray-600 dark:text-gray-200">
         <strong>Categories:</strong> {recipe.categories?.join(", ")}
       </p>
-      <p className="mb-4 text-gray-600">
+      <p className="mb-4 text-gray-600 dark:text-gray-200">
         <strong>Added by:</strong> {recipe.user?.name || "Anonymous"}
       </p>
 
-      <div className="mb-6">
+      <div className="mb-6 dark:text-gray-200">
         <h2 className="mb-2 text-xl font-semibold">Ingredients:</h2>
         <p className="whitespace-pre-line">{recipe.ingredients}</p>
       </div>
 
-      <div className="mb-6">
+      <div className="mb-6 dark:text-gray-200">
         <h2 className="mb-2 text-xl font-semibold">Instructions:</h2>
         <p className="whitespace-pre-line">{recipe.instructions}</p>
       </div>

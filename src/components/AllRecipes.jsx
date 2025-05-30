@@ -45,16 +45,22 @@ export default function AllRecipes() {
   return (
     <div className="py-10">
       <div className="flex justify-between">
-        <h1 className="mb-6 text-center text-3xl font-bold">All Recipes</h1>
+        <h1 className="mb-6 text-center text-3xl font-bold dark:text-gray-200">
+          All Recipes
+        </h1>
 
         <div className="mb-6 text-center">
           <select
             value={selectedCuisine}
             onChange={(e) => setSelectedCuisine(e.target.value)}
-            className="rounded border border-orange-300 px-4 py-2 shadow focus:outline-none"
+            className="rounded border border-orange-300 px-4 py-2 shadow focus:outline-none dark:text-gray-200"
           >
             {cuisineOptions.map((type) => (
-              <option key={type} value={type}>
+              <option
+                key={type}
+                value={type}
+                className="bg-white text-black dark:bg-gray-800 dark:text-gray-200"
+              >
                 {type}
               </option>
             ))}

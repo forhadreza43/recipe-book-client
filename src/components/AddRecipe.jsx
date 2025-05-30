@@ -79,7 +79,9 @@ export default function AddRecipe() {
 
   return (
     <div className="mx-auto mt-20 max-w-3xl rounded border border-orange-300 p-6 shadow">
-      <h2 className="mb-4 text-2xl font-bold">Add a New Recipe</h2>
+      <h2 className="mb-4 text-2xl font-bold dark:text-gray-200">
+        Add a New Recipe
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -123,12 +125,17 @@ export default function AddRecipe() {
           name="cuisine"
           value={formData.cuisine}
           onChange={handleChange}
-          className="input-field"
+          className="input-field dark:text-gray-200"
           required
         >
           <option value="">Select Cuisine Type</option>
           {cuisineTypes.map((type) => (
-            <option key={type}>{type}</option>
+            <option
+              key={type}
+              className="bg-white text-black dark:bg-gray-800 dark:text-gray-200"
+            >
+              {type}
+            </option>
           ))}
         </select>
 
@@ -143,10 +150,13 @@ export default function AddRecipe() {
         />
 
         <div>
-          <p className="mb-2 font-medium">Categories:</p>
+          <p className="mb-2 font-medium dark:text-gray-200">Categories:</p>
           <div className="flex flex-wrap gap-4">
             {categories.map((cat) => (
-              <label key={cat} className="flex items-center gap-2">
+              <label
+                key={cat}
+                className="flex items-center gap-2 dark:text-gray-200"
+              >
                 <input
                   type="checkbox"
                   name="categories"

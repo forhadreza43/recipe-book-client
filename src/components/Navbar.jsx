@@ -1,7 +1,8 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Menu, X } from "lucide-react"; // Optional: for hamburger icons
+import { Menu, X } from "lucide-react";
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function Navbar() {
   const { user, logOut } = useContext(AuthContext);
@@ -17,18 +18,17 @@ export default function Navbar() {
   const navLinkClasses = ({ isActive }) =>
     isActive
       ? "text-orange-600 font-semibold"
-      : "text-gray-700 hover:text-orange-500";
+      : "text-gray-700 hover:text-orange-500 dark:text-gray-200";
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md dark:border-b dark:border-b-gray-600 dark:bg-gray-900">
       <div className="mx-auto flex w-11/12 max-w-7xl items-center justify-between py-3">
-        {/* Logo */}
+
         <Link to="/" className="text-2xl font-bold text-orange-600">
           Recipe Book
         </Link>
 
-        {/* Desktop Nav Links */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-6 md:flex ">
           <NavLink to="/" className={navLinkClasses}>
             Home
           </NavLink>
@@ -42,7 +42,7 @@ export default function Navbar() {
             My Recipes
           </NavLink>
         </div>
-
+        <DarkModeToggle />
         {/* User Auth */}
         <div className="hidden md:block">
           {!user ? (

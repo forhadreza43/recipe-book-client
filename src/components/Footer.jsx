@@ -7,7 +7,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 px-4 py-8 text-white">
+    <footer className="bg-gray-900 px-4 py-8 text-white dark:border-t dark:border-t-gray-600">
       <div className="grid max-w-7xl grid-cols-1 gap-6 text-center md:grid-cols-3 md:text-left w-11/12 mx-auto">
         {/* Website Name */}
         <div>

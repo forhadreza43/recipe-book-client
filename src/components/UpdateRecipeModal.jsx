@@ -38,9 +38,11 @@ export default function UpdateRecipeModal({ recipe, onClose, onUpdate }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-      <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
-        <h2 className="mb-4 text-xl font-bold">Update Recipe</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 dark:bg-gray-700/50">
+      <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl dark:bg-gray-900">
+        <h2 className="mb-4 text-xl font-bold dark:text-gray-200">
+          Update Recipe
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -88,7 +90,12 @@ export default function UpdateRecipeModal({ recipe, onClose, onUpdate }) {
           >
             <option value="">Select Cuisine Type</option>
             {cuisineTypes.map((type) => (
-              <option key={type}>{type}</option>
+              <option
+                key={type}
+                className="bg-white text-black dark:bg-gray-800 dark:text-gray-200"
+              >
+                {type}
+              </option>
             ))}
           </select>
           <input
@@ -101,10 +108,13 @@ export default function UpdateRecipeModal({ recipe, onClose, onUpdate }) {
             required
           />
           <div>
-            <p className="mb-2 font-medium">Categories:</p>
+            <p className="mb-2 font-medium dark:text-gray-200">Categories:</p>
             <div className="flex flex-wrap gap-4">
               {categories.map((cat) => (
-                <label key={cat} className="flex items-center gap-2">
+                <label
+                  key={cat}
+                  className="flex items-center gap-2 dark:text-gray-200"
+                >
                   <input
                     type="checkbox"
                     name="categories"
@@ -122,13 +132,13 @@ export default function UpdateRecipeModal({ recipe, onClose, onUpdate }) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded bg-gray-300 px-4 py-2"
+              className="cursor-pointer rounded bg-gray-300 px-4 py-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="rounded bg-green-600 px-4 py-2 text-white"
+              className="cursor-pointer rounded bg-orange-600 px-4 py-2 text-white"
             >
               Update
             </button>

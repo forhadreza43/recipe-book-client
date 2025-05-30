@@ -77,7 +77,9 @@ export default function MyRecipes() {
         <NoRecipesFound />
       ) : (
         <>
-          <h1 className="mb-6 text-center text-3xl font-bold">My Recipes</h1>
+          <h1 className="mb-6 text-center text-3xl font-bold dark:text-gray-200">
+            My Recipes
+          </h1>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {recipes.map((recipe) => (
               <MyRecipeCard
