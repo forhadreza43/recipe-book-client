@@ -14,9 +14,21 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
+
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isLongEnough = password.length >= 6;
+
+    if (!hasUppercase || !hasLowercase || !isLongEnough) {
+      setError(
+        "Password must be at least 6 characters long and include both uppercase and lowercase letters.",
+      );
+      return;
+    }
+
     try {
       await createUser(email, password);
-      await updateUserProfile({ displayName: name, photoURL: photoURL });
+      await updateUserProfile({ displayName: name, photoURL });
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -24,13 +36,12 @@ export default function Register() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-orange-50">
-      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md">
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md border border-orange-300">
         <h2 className="mb-6 text-center text-3xl font-bold text-orange-600">
           Register
         </h2>
         <form onSubmit={handleRegister} className="space-y-4">
-          {error && <p className="text-sm text-red-500">{error}</p>}
           <input
             type="text"
             placeholder="Full Name"
@@ -53,12 +64,15 @@ export default function Register() {
             required
             className="input-field"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
           />
+          {error && <p className="text-sm text-red-500">{error}</p>}
           <input
             type="url"
             placeholder="Photo URL"
-            required
             className="input-field"
             value={photoURL}
             onChange={(e) => setPhotoURL(e.target.value)}

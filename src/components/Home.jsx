@@ -3,8 +3,6 @@ import { Link } from "react-router";
 import GlobalLoader from "../components/GlobalLoader";
 import RecipeCard from "./RecipeCard";
 import Hero from "./Hero";
-import { LuChefHat } from "react-icons/lu";
-import { SiCodechef } from "react-icons/si";
 import { PiChefHat } from "react-icons/pi";
 import { IoIosTimer, IoMdTimer } from "react-icons/io";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
@@ -16,7 +14,9 @@ export default function Home() {
   useEffect(() => {
     const fetchTopRecipes = async () => {
       try {
-        const res = await fetch("http://localhost:3000/top-recipes");
+        const res = await fetch(
+          "https://recipe-book-app-server-chi.vercel.app/top-recipes",
+        );
         const data = await res.json();
         setTopRecipes(data);
       } catch (error) {
@@ -36,7 +36,7 @@ export default function Home() {
 
       <section className="py-12">
         <h2 className="mb-8 text-center text-3xl font-bold">Top Recipes</h2>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {topRecipes.map((recipe) => (
             <RecipeCard key={recipe._id} recipe={recipe} />
           ))}

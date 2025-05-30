@@ -16,11 +16,14 @@ export default function UpdateRecipeModal({ recipe, onClose, onUpdate }) {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/recipes/${recipe._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `https://recipe-book-app-server-chi.vercel.app/recipes/${recipe._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        },
+      );
 
       if (res.ok) {
         const updated = await res.json();

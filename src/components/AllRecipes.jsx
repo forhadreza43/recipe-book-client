@@ -13,10 +13,12 @@ export default function AllRecipes() {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/recipes");
+        const response = await fetch(
+          "https://recipe-book-app-server-chi.vercel.app/recipes",
+        );
         const data = await response.json();
         setRecipes(data);
-        setFilteredRecipes(data); // Initial state
+        setFilteredRecipes(data); 
       } catch (error) {
         console.error("Failed to fetch recipes:", error);
       } finally {
@@ -41,7 +43,7 @@ export default function AllRecipes() {
   }
 
   return (
-    <div className="px-6 py-10">
+    <div className="py-10">
       <div className="flex justify-between">
         <h1 className="mb-6 text-center text-3xl font-bold">All Recipes</h1>
 

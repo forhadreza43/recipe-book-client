@@ -14,7 +14,9 @@ export default function RecipeDetails() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/recipes/${id}`);
+        const response = await fetch(
+          `https://recipe-book-app-server-chi.vercel.app/recipes/${id}`,
+        );
         const data = await response.json();
         setRecipe(data);
         setLikeCount(data.likes || 0);
@@ -34,12 +36,15 @@ export default function RecipeDetails() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/recipes/${id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
+      const response = await fetch(
+        `https://recipe-book-app-server-chi.vercel.app/recipes/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
         },
-      });
+      );
       if (response.ok) {
         const updatedRecipe = await response.json();
         setLikeCount(updatedRecipe.likes);
@@ -58,7 +63,7 @@ export default function RecipeDetails() {
   if (!recipe) return <div className="mt-10 text-center">Recipe not found</div>;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto py-10">
       <p className="mb-4 text-xl font-semibold text-orange-500">
         {likeCount} people interested in this recipe
       </p>

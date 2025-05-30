@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
+import { useLocation } from "react-router";
 
 export default function Login() {
   const { signInWithEmail, signInWithGoogle } = useContext(AuthContext);
@@ -12,6 +13,9 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectPath = location.state || "/";
+  // console.log(location, redirectPath);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,7 +23,7 @@ export default function Login() {
     try {
       await signInWithEmail(email, password);
       toast.success("Login successful!");
-      navigate("/"); // redirect to home or dashboard
+      navigate(redirectPath);
     } catch (err) {
       setError(err.message);
       toast.error("Invalid email or password.");
@@ -30,7 +34,7 @@ export default function Login() {
     try {
       await signInWithGoogle();
       toast.success("Login successful!");
-      navigate("/");
+      navigate(redirectPath);
     } catch (err) {
       setError(err.message);
       toast.error("Invalid email or password.");
@@ -38,10 +42,10 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-orange-50">
-      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md">
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md border border-orange-300">
         <h2 className="mb-6 text-center text-3xl font-bold text-orange-600">
-          Login to Recipe Book
+          Login
         </h2>
         <form onSubmit={handleLogin} className="space-y-4">
           {error && <p className="text-sm text-red-500">{error}</p>}
@@ -53,6 +57,13 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <div className="mb-1 flex justify-between">
+            <div className="mb-1"></div>
+            <Link className="mb-1 text-right text-sm text-orange-600">
+              Forget password
+            </Link>
+          </div>
+
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
