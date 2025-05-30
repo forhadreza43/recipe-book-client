@@ -43,7 +43,7 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md border border-orange-300">
+      <div className="w-full max-w-md rounded-xl border border-orange-300 bg-white p-8 shadow-md dark:bg-gray-800">
         <h2 className="mb-6 text-center text-3xl font-bold text-orange-600">
           Login
         </h2>
@@ -100,7 +100,7 @@ export default function Login() {
           Continue with Google
         </button>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-200">
           Don’t have an account?{" "}
           <Link to="/register" className="text-orange-600">
             Register
