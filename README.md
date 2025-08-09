@@ -1,12 +1,42 @@
-# React + Vite
+# 🍽 Recipe Book
+https://i.ibb.co.com/RTfWqf25/Screenshot-2025-08-09-120356.png
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured **MERN stack recipe management platform** where users can browse all recipes, view detailed instructions, add their own recipes, and manage (update/delete) the ones they’ve created. Designed for a seamless cooking inspiration and recipe-sharing experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
+🔗 **[View Live Project](https://recipe-book-client-five.vercel.app/)**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Technologies Used
+
+### **Frontend**
+- React 19+
+- React Router v7+
+- Tailwind CSS 4+
+- DaisyUI
+- Axios
+- React Hot Toast
+
+### **Backend**
+- Node.js
+- Express.js
+- MongoDB & Mongoose v8
+- JWT Authentication
+- Dotenv
+- CORS
+
+---
+
+## 📌 Core Features
+- 📜 **View All Recipes**: Browse recipes with title, cuisine type, preparation time, and like count.  
+- 🔍 **Recipe Details**: View detailed ingredients, instructions, and related data.  
+- ➕ **Add Recipe**: Authenticated users can create recipes with images and full details.  
+- ✏ **Update Recipe**: Modify your own added recipes anytime.  
+- ❌ **Delete Recipe**: Remove recipes you created.  
+- 🔐 **Protected Routes**: Only authenticated users can add, edit, or delete their recipes.
+
+---
+
