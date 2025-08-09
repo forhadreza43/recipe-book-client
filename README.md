@@ -1,5 +1,5 @@
 # 🍽 Recipe Book
-https://i.ibb.co.com/RTfWqf25/Screenshot-2025-08-09-120356.png
+<img src="https://i.ibb.co.com/RTfWqf25/Screenshot-2025-08-09-120356.png" alt="Banner" width="100%" />
 
 A full-featured **MERN stack recipe management platform** where users can browse all recipes, view detailed instructions, add their own recipes, and manage (update/delete) the ones they’ve created. Designed for a seamless cooking inspiration and recipe-sharing experience.
 
@@ -40,3 +40,14 @@ A full-featured **MERN stack recipe management platform** where users can browse
 
 ---
 
+## 🛠️ Setup Instructions
+
+> Make sure you have **Node.js**, **MongoDB**, and a `.env` file set up.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/forhadreza43/recipe-book-client.git
+cd recipe-book-client
+
+```
